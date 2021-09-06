@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import Airline from './Airline'
+import Navbar from '../Navbar'
 import styled from 'styled-components'
 
 const Home = styled.div`
@@ -40,19 +41,21 @@ const Airlines = () => {
 
   const grid = airlines.map( item => {
     return (
-      <Airline attributes={item.attributes}/>
+      <Airline key={item.id} attributes={item.attributes}/>
     )
   })
   return (
-    <Home>
-      <Header>
-        <h1>Open Flights</h1>
-        <Subheader>Honest, unbaised airline reviews.</Subheader>
-      </Header>
-        <Grid>
-          {grid}
-        </Grid>
-    </Home>
+    <><Navbar/>
+      <Home>
+        <Header>
+          <h1>Open Flights</h1>
+          <Subheader>Honest, unbaised airline reviews.</Subheader>
+        </Header>
+          <Grid>
+            {grid}
+          </Grid>
+      </Home>
+    </>
   )
 }
 
